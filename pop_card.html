@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        /*因为scale缩小后原本的空间仍然保留，所以在实际应用中会造成中间巨大的空白，
+        可以采取设置其宽度为你测试好的缩放尺度，然后点击后放大到原本合适的尺寸，
+        而合适的尺寸就是宽度固定高度自适应的尺寸，*/
+        .card {
+            width: 400px;
+            padding: 15px 30px;
+            cursor: pointer;
+            overflow: hidden;
+            margin-top: 100px;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 16px;
+            text-align: center;
+            background-color: grey;
+            color:white;
+            box-shadow: 0 0 20px red;
+            transform: scale(0.3, 0.3);
+            transition: all 0.5s cubic-bezier(0.2, 0.1, 0, 1.2);
+        }
+        .card:hover {
+            transform: scale(0.4, 0.4);
+        }
+        .card h1 {
+            opacity: 0;
+            font-size: 24px;
+            margin-bottom: 15px;
+            text-shadow: 0 0 15px white;
+            /*--------造成上移的效果---------*/
+            transform: translate(0, 30px);
+            transition: all 0.3s 0.1s ease-out;
+        }
+        .card p {
+            opacity: 0;
+            font-size: 15px;
+            line-height: 24px;
+            text-align: left;
+            /*--------造成上移的效果---------*/
+            transform: translate(0, 30px);
+            transition: all 0.3s 0.15s ease-out;
+        }
+        .card.card-open{
+            transform:scale(1,1);
+        }
+        .card.card-open h1, .card.card-open p {
+            opacity: 1;
+            /*--------造成上移的效果---------*/
+            transform: translate(0, 0);
+        }
+    </style>
+</head>
+<body>
+<div class="card">
+    <h1>念奴娇</h1>
+    <p>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;洞庭青草，近中秋、更无一点风色。玉鉴琼田三万顷，著我扁舟一叶。
+        素月分辉，银河共影，表里俱澄澈。怡然心会，妙处难与君说。<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;应念岭海经年，孤光自照，肝胆皆冰雪。短发萧骚襟袖冷，稳泛沧浪空阔。
+        尽挹西江，细斟北斗，万象为宾客。扣舷独啸，不知今夕何夕。
+    </p>
+</div>
+
+<script src="jquery-3.1.0.js"></script>
+<script>
+    var card=document.querySelector('.card');
+    card.addEventListener('click',function () {
+        card.classList.toggle('card-open');
+    });
+</script>
+</body>
+</html>
